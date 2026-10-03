@@ -7,204 +7,197 @@
 <style>
   :root{
     --red:#EF3124; --red-dark:#C81E15; --red-soft:#FDEBE9;
-    --ink:#1A1A1A; --muted:#6E6E73; --bg:#ffffff; --bg-soft:#F6F6F7;
+    --ink:#1A1A1A; --muted:#6E6E73; --bg:#fff; --bg-soft:#F6F6F7;
     --line:#E8E8EC; --good:#0E8A4D;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
   body{font-family:"Graphik",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
-  .slide{min-height:100vh;width:100%;display:flex;flex-direction:column;justify-content:center;padding:72px 8vw 96px;position:relative;scroll-snap-align:start}
-  .wrap{max-width:1180px;margin:0 auto;width:100%}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;letter-spacing:.2px}
-  .brand .sq{width:26px;height:26px;border-radius:6px;background:var(--red);display:inline-block;position:relative}
-  .brand .sq::after{content:"";position:absolute;left:6px;top:13px;width:14px;height:3px;background:#fff;border-radius:2px}
-  .eyebrow{color:var(--red);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
-  h1{font-size:clamp(38px,6vw,76px);line-height:1.02;letter-spacing:-.02em;font-weight:800}
-  h2{font-size:clamp(28px,3.6vw,46px);line-height:1.08;letter-spacing:-.01em;font-weight:800;margin-bottom:28px}
-  .lead{font-size:clamp(17px,2vw,22px);line-height:1.5;color:#3a3a3c;margin-top:22px;max-width:760px}
+  .slide{width:100%;padding:44px 20px 8px}
+  .wrap{max-width:640px;margin:0 auto;width:100%}
+  .brand{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;margin-bottom:26px}
+  .brand .sq{width:24px;height:24px;border-radius:6px;background:var(--red);display:inline-block;position:relative}
+  .brand .sq::after{content:"";position:absolute;left:5px;top:12px;width:14px;height:3px;background:#fff;border-radius:2px}
+  .eyebrow{color:var(--red);font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+  h1{font-size:40px;line-height:1.03;letter-spacing:-.02em;font-weight:800}
+  h2{font-size:26px;line-height:1.12;letter-spacing:-.01em;font-weight:800;margin-bottom:16px}
+  .lead{font-size:16px;line-height:1.5;color:#3a3a3c;margin-top:12px}
   .muted{color:var(--muted)}
-  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
-  .chip{background:var(--bg-soft);border:1px solid var(--line);border-radius:100px;padding:10px 18px;font-size:14px;font-weight:600}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .chip{background:var(--bg-soft);border:1px solid var(--line);border-radius:100px;padding:8px 14px;font-size:13px;font-weight:600}
   .chip.red{background:var(--red);color:#fff;border-color:var(--red)}
 
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  .card{background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:26px}
+  .grid3{display:grid;grid-template-columns:1fr;gap:12px}
+  .grid2{display:grid;grid-template-columns:1fr;gap:12px}
+  .card{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:20px}
   .card.soft{background:var(--bg-soft);border-color:transparent}
   .card.red{background:var(--red);color:#fff;border-color:var(--red)}
-  .card .num{font-size:clamp(30px,4vw,52px);font-weight:800;letter-spacing:-.02em;line-height:1}
-  .card .lbl{font-size:14px;color:var(--muted);margin-top:10px}
+  .card .num{font-size:34px;font-weight:800;letter-spacing:-.02em;line-height:1}
+  .card .lbl{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.4}
   .card.red .lbl{color:rgba(255,255,255,.82)}
-  .card .ttl{font-weight:700;font-size:17px;margin-bottom:14px}
+  .card .ttl{font-weight:700;font-size:16px;margin-bottom:10px}
 
-  .chartbox{background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:24px 20px 14px}
+  .chartbox{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:14px 10px 8px}
   .chartbox svg{width:100%;height:auto;display:block}
-  .chart-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px}
-  .chart-head .per{font-size:34px;font-weight:800;color:var(--good);letter-spacing:-.02em}
-  .chart-head .tag{font-size:14px;color:var(--muted);text-align:right;line-height:1.4}
+  .chart-head{margin-bottom:6px}
+  .chart-head .per{font-size:30px;font-weight:800;color:var(--good);letter-spacing:-.02em}
+  .chart-head .tag{font-size:13px;color:var(--muted);line-height:1.35}
 
-  table{width:100%;border-collapse:collapse;font-size:15px}
-  th,td{text-align:left;padding:15px 16px;border-bottom:1px solid var(--line);vertical-align:top}
-  th{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border-bottom:2px solid var(--ink)}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);border-bottom:2px solid var(--ink)}
   td.yes{color:var(--good);font-weight:700}
   td.no{color:var(--muted)}
-  .tick{color:var(--good);font-weight:700}
 
-  ul.big{list-style:none;display:flex;flex-direction:column;gap:16px}
-  ul.big li{padding-left:34px;position:relative;font-size:18px;line-height:1.5}
-  ul.big li::before{content:"✓";position:absolute;left:0;top:0;width:24px;height:24px;border-radius:50%;background:var(--red-soft);color:var(--red);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:13px}
+  ul.big{list-style:none;display:flex;flex-direction:column;gap:12px}
+  ul.big li{padding-left:28px;position:relative;font-size:16px;line-height:1.5}
+  ul.big li::before{content:"✓";position:absolute;left:0;top:0;width:20px;height:20px;border-radius:50%;background:var(--red-soft);color:var(--red);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:11px}
 
-  .nav{position:fixed;right:24px;bottom:24px;display:flex;gap:10px;z-index:50}
-  .nav button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:18px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.08)}
-  .nav button:hover{background:var(--red);color:#fff;border-color:var(--red)}
-  .footer{font-size:12px;color:#9a9a9f;text-align:center;padding:0 8vw 28px;max-width:1180px;margin:0 auto}
-
-  @media(max-width:860px){.grid2,.grid3{grid-template-columns:1fr}.slide{padding:64px 20px 90px}.nav{right:16px;bottom:16px}}
+  .footer{font-size:12px;color:#9a9a9f;text-align:center;padding:16px 20px 28px;max-width:640px;margin:0 auto;line-height:1.5}
+  .sep{height:1px;background:var(--line);margin:0 20px}
 </style>
 </head>
 <body>
 
-<!-- 1. Обложка -->
 <section class="slide">
   <div class="wrap">
     <div class="brand"><span class="sq"></span> Альфа-Капитал</div>
-    <div style="margin-top:60px">
-      <div class="eyebrow">БПИФ «Альфа-Капитал Денежный рынок» · AKMM</div>
-      <h1>Копилка<br>для квартиры</h1>
-      <p class="lead">Копите на первый взнос или полную покупку квартиры на денежном рынке: деньги работают каждый день, а забрать их можно в любой момент без потери накопленного дохода.</p>
-      <div class="chips">
-        <span class="chip red">Доход начисляется ежедневно</span>
-        <span class="chip">Пополнение в любой день</span>
-        <span class="chip">Снятие без потери процентов</span>
-      </div>
+    <div class="eyebrow">БПИФ «Альфа-Капитал Денежный рынок» · AKMM</div>
+    <h1>Копилка для квартиры</h1>
+    <p class="lead">Копите на первый взнос или полную покупку квартиры на денежном рынке: деньги работают каждый день, а забрать их можно в любой момент без потери накопленного дохода.</p>
+    <div class="chips">
+      <span class="chip red">Доход начисляется ежедневно</span>
+      <span class="chip">Пополнение в любой день</span>
+      <span class="chip">Снятие без потери процентов</span>
     </div>
   </div>
 </section>
+<div class="sep"></div>
 
-<!-- 2. Идея -->
 <section class="slide">
   <div class="wrap">
     <div class="eyebrow">Зачем фонд под цель «квартира»</div>
-    <h2>Копить на квартиру — значит иметь и доход, и свободу забрать деньги</h2>
-    <div class="grid3" style="margin-top:30px">
-      <div class="card"><div class="num">1</div><div class="ttl" style="margin-top:10px">Цель крупная и долгая</div><div class="muted" style="line-height:1.55">Нужен инструмент, который стабильно прибавляет и не «проседает» перед самой сделкой.</div></div>
-      <div class="card"><div class="num">2</div><div class="ttl" style="margin-top:10px">Квартира может «появиться» внезапно</div><div class="muted" style="line-height:1.55">Поэтому важно иметь возможность вывести всю сумму в любой день, не потеряв накопленный доход.</div></div>
-      <div class="card"><div class="num">3</div><div class="ttl" style="margin-top:10px">Копить надо регулярно</div><div class="muted" style="line-height:1.55">Пополнение без ограничений по сумме и срокам — в любой день и в любом объёме.</div></div>
+    <h2>Доход и свобода забрать деньги</h2>
+    <div class="grid3">
+      <div class="card"><div class="num">1</div><div class="ttl" style="margin-top:8px">Цель крупная и долгая</div><div class="muted" style="line-height:1.5">Нужен инструмент, который стабильно прибавляет и не «проседает» перед самой сделкой.</div></div>
+      <div class="card"><div class="num">2</div><div class="ttl" style="margin-top:8px">Квартира может «появиться» внезапно</div><div class="muted" style="line-height:1.5">Важно вывести всю сумму в любой день, не потеряв накопленный доход.</div></div>
+      <div class="card"><div class="num">3</div><div class="ttl" style="margin-top:8px">Копить надо регулярно</div><div class="muted" style="line-height:1.5">Пополнение без ограничений по сумме и срокам.</div></div>
     </div>
-    <p class="lead" style="margin-top:26px">Всё это закрывает БПИФ «Альфа-Капитал Денежный рынок» — фонд, который размещает деньги в консервативные инструменты денежного рынка и приносит доход ежедневно.</p>
+    <p class="lead">Всё это закрывает БПИФ «Альфа-Капитал Денежный рынок» — фонд, который размещает деньги в консервативные инструменты денежного рынка и приносит доход ежедневно.</p>
   </div>
 </section>
+<div class="sep"></div>
 
-<!-- 3. График 1 год -->
 <section class="slide">
   <div class="wrap">
     <div class="eyebrow">Динамика стоимости пая</div>
-    <div class="chart-head" style="max-width:880px">
-      <h2>За 1 год</h2>
-      <div><div class="per">+15,3%</div><div class="tag">рост стоимости пая<br>без единой просадки</div></div>
+    <div class="chart-head">
+      <h2 style="margin-bottom:4px">За 1 год</h2>
+      <div class="per">+15,3%</div>
+      <div class="tag">рост без единой просадки</div>
     </div>
     <div class="chartbox" id="chart1y"></div>
-    <p class="muted" style="margin-top:14px;font-size:14px">Стоимость пая: 154,92 → 178,62. Максимальная просадка за период — 0,00%.</p>
+    <p class="muted" style="margin-top:8px;font-size:13px">Стоимость пая: 154,92 → 178,62 · просадка 0,00%</p>
   </div>
 </section>
+<div class="sep"></div>
 
-<!-- 4. График 3 года -->
 <section class="slide">
   <div class="wrap">
     <div class="eyebrow">Динамика стоимости пая</div>
-    <div class="chart-head" style="max-width:880px">
-      <h2>За 3 года</h2>
-      <div><div class="per">+63,0%</div><div class="tag">эффект сложного процента<br>с ежедневной капитализацией</div></div>
+    <div class="chart-head">
+      <h2 style="margin-bottom:4px">За 3 года</h2>
+      <div class="per">+63,0%</div>
+      <div class="tag">эффект сложного процента</div>
     </div>
     <div class="chartbox" id="chart3y"></div>
-    <p class="muted" style="margin-top:14px;font-size:14px">Стоимость пая: 109,57 → 178,62. Максимальная просадка за период — −0,05%.</p>
+    <p class="muted" style="margin-top:8px;font-size:13px">Стоимость пая: 109,57 → 178,62 · просадка −0,05%</p>
   </div>
 </section>
+<div class="sep"></div>
 
-<!-- 5. Опции -->
 <section class="slide">
   <div class="wrap">
     <div class="eyebrow">Гибкость</div>
     <h2>Пополняйте и снимайте — когда удобно</h2>
     <ul class="big">
-      <li><b>Вывод в любой торговый день.</b> Паи продаются на бирже, доход, начисленный внутри фонда, уже заложен в цену пая — вы не теряете накопленные проценты.</li>
-      <li><b>Пополнение в любой день и в любом объёме.</b> Максимальная сумма не ограничена, минимальный порог — стоимость одного пая на бирже.</li>
-      <li><b>Никаких штрафов и потери процентов.</b> В отличие от вклада, досрочного снятия «с потерей» здесь не существует.</li>
+      <li><b>Вывод в любой торговый день.</b> Паи продаются на бирже, доход уже заложен в цену пая — проценты не теряются.</li>
+      <li><b>Пополнение в любой день и в любом объёме.</b> Максимальная сумма не ограничена, порог — стоимость одного пая.</li>
+      <li><b>Никаких штрафов.</b> Досрочного снятия «с потерей», как во вкладе, здесь нет.</li>
     </ul>
   </div>
 </section>
+<div class="sep"></div>
 
-<!-- 6. Доходность -->
 <section class="slide">
   <div class="wrap">
     <div class="eyebrow">Доходность</div>
     <h2>Выше, чем у вкладов и накопительных счетов с такими же опциями</h2>
-    <p class="lead">Фонд следует за ключевой ставкой Банка России, а доход начисляется и капитализируется ежедневно. Вклады и накопительные счета, которые дают свободу пополнять и снимать в любой день, платят за эту гибкость пониженной ставкой — здесь такого компромисса нет.</p>
-    <div class="grid3" style="margin-top:30px">
-      <div class="card red"><div class="num">≈ Ключевая</div><div class="lbl">ставка фонда следует за ключевой ставкой ЦБ</div></div>
+    <p class="lead">Фонд следует за ключевой ставкой Банка России, доход начисляется и капитализируется ежедневно. Вклады и накопительные счета, дающие свободу пополнять и снимать в любой день, платят за эту гибкость пониженной ставкой — здесь такого компромисса нет.</p>
+    <div class="grid3">
+      <div class="card red"><div class="num">≈ Ключевая</div><div class="lbl">ставка следует за ключевой ставкой ЦБ</div></div>
       <div class="card"><div class="num">Ежедневно</div><div class="lbl">начисление дохода в фонд</div></div>
       <div class="card"><div class="num">Сложный %</div><div class="lbl">доход регулярно капитализируется</div></div>
     </div>
   </div>
 </section>
+<div class="sep"></div>
 
-<!-- 7. Безопасность -->
 <section class="slide">
   <div class="wrap">
     <div class="eyebrow">Надёжность</div>
     <h2>Один из самых консервативных инструментов рынка</h2>
-    <div class="grid2" style="margin-top:28px">
+    <div class="grid2">
       <div class="card">
         <div class="ttl">Чем обеспечена устойчивость</div>
-        <ul class="big" style="gap:12px">
-          <li style="font-size:16px">Ультра-консервативный риск-профиль фонда</li>
-          <li style="font-size:16px">Размещение в обратное РЕПО с центральным контрагентом Московской биржи + консервативные долговые инструменты</li>
-          <li style="font-size:16px">Просадка за 3 года — всего −0,05%</li>
+        <ul class="big" style="gap:10px">
+          <li style="font-size:15px">Ультра-консервативный риск-профиль фонда</li>
+          <li style="font-size:15px">Обратное РЕПО с центральным контрагентом Мосбиржи + консервативные долговые инструменты</li>
+          <li style="font-size:15px">Просадка за 3 года — всего −0,05%</li>
         </ul>
       </div>
       <div class="card soft">
         <div class="ttl">УК «Альфа-Капитал»</div>
         <div class="num" style="color:var(--red)">А++</div>
-        <div class="lbl">наивысший уровень надёжности и качества услуг — рейтинг «Эксперт РА»</div>
-        <div style="height:14px"></div>
+        <div class="lbl">наивысший уровень надёжности — рейтинг «Эксперт РА»</div>
+        <div style="height:12px"></div>
         <div class="ttl">СЧА фонда</div>
         <div class="num">≈ 337,5 млрд ₽</div>
         <div class="lbl">один из крупнейших фондов денежного рынка</div>
       </div>
     </div>
-    <p class="lead" style="margin-top:26px">Это эффективная «копилка»: деньги не лежат без движения, а ежедневно работают с минимальным риском снижения.</p>
+    <p class="lead">Это эффективная «копилка»: деньги не лежат без движения, а ежедневно работают с минимальным риском снижения.</p>
   </div>
 </section>
+<div class="sep"></div>
 
-<!-- 8. Сравнение -->
 <section class="slide">
   <div class="wrap">
     <div class="eyebrow">Сравнение</div>
     <h2>Денежный рынок против вклада и накопительного счёта</h2>
-    <table style="margin-top:24px">
-      <thead><tr><th>Критерий</th><th>AKMM · Денежный рынок</th><th>Вклад</th><th>Накопительный счёт</th></tr></thead>
+    <table>
+      <thead><tr><th>Критерий</th><th>AKMM</th><th>Вклад</th><th>Накоп. счёт</th></tr></thead>
       <tbody>
         <tr><td><b>Пополнение</b></td><td class="yes">В любой день, без ограничения суммы</td><td class="no">Часто ограничено</td><td class="no">Может быть ограничено</td></tr>
-        <tr><td><b>Снятие</b></td><td class="yes">В любой торговый день, без потери дохода</td><td class="no">Досрочно — с потерей процентов</td><td class="no">Ограничения, ставка на минимальный остаток</td></tr>
-        <tr><td><b>Начисление дохода</b></td><td class="yes">Ежедневно, с капитализацией</td><td class="no">В конце срока / по периодам</td><td class="no">Ежемесячно</td></tr>
-        <tr><td><b>Доходность</b></td><td class="yes">Следует за ключевой ставкой ЦБ</td><td class="no">Фиксированная, ниже при гибких условиях</td><td class="no">Как правило, ниже ключевой</td></tr>
+        <tr><td><b>Снятие</b></td><td class="yes">В любой торговый день, без потери дохода</td><td class="no">Досрочно — с потерей процентов</td><td class="no">Ограничения, ставка на мин. остаток</td></tr>
+        <tr><td><b>Начисление</b></td><td class="yes">Ежедневно, с капитализацией</td><td class="no">В конце срока / по периодам</td><td class="no">Ежемесячно</td></tr>
+        <tr><td><b>Доходность</b></td><td class="yes">Следует за ключевой ставкой ЦБ</td><td class="no">Ниже при гибких условиях</td><td class="no">Как правило, ниже ключевой</td></tr>
         <tr><td><b>Риск</b></td><td class="yes">Ультра-консервативный, РЕПО с ЦК</td><td class="no">—</td><td class="no">—</td></tr>
       </tbody>
     </table>
   </div>
 </section>
+<div class="sep"></div>
 
-<!-- 9. Итог -->
 <section class="slide">
-  <div class="wrap" style="text-align:left">
+  <div class="wrap">
     <div class="eyebrow">Итог</div>
     <h2>Эффективная копилка для покупки квартиры</h2>
-    <div class="grid3" style="margin-top:30px">
+    <div class="grid3">
       <div class="card"><div class="num" style="color:var(--red)">+15,3%</div><div class="lbl">доходность за 1 год</div></div>
       <div class="card"><div class="num" style="color:var(--red)">+63,0%</div><div class="lbl">доходность за 3 года</div></div>
       <div class="card"><div class="num" style="color:var(--red)">−0,05%</div><div class="lbl">максимальная просадка за 3 года</div></div>
     </div>
-    <div class="chips" style="margin-top:26px">
+    <div class="chips">
       <span class="chip">БПИФ «Альфа-Капитал Денежный рынок»</span>
       <span class="chip">Тикер AKMM</span>
       <span class="chip">ISIN RU000A104X08</span>
@@ -214,11 +207,6 @@
 </section>
 
 <div class="footer">Данные: стоимость пая на 01.10.2026. Результаты прошлых периодов не гарантируют будущую доходность.</div>
-
-<div class="nav">
-  <button onclick="window.scrollBy({top:-innerHeight,behavior:'smooth'})" aria-label="Назад">↑</button>
-  <button onclick="window.scrollBy({top:innerHeight,behavior:'smooth'})" aria-label="Вперёд">↓</button>
-</div>
 
 <script>
 const DATA1Y = `date,close_eval
@@ -1244,15 +1232,11 @@ function parse(csv, step){
   if(out[out.length-1].d !== last[0]) out.push({d:last[0], v:parseFloat(last[1])});
   return out;
 }
-
-function fmtDate(d){
-  const p = d.split('-');
-  return p[2] + '.' + p[1] + '.' + p[0];
-}
+function fmtDate(d){const p=d.split('-');return p[2]+'.'+p[1]+'.'+p[0];}
 
 function draw(elId, pts){
   const el = document.getElementById(elId);
-  const W = 960, H = 420, padL = 62, padR = 26, padT = 24, padB = 44;
+  const W = 520, H = 260, padL = 44, padR = 18, padT = 16, padB = 30;
   const ys = pts.map(p => p.v);
   const min = Math.min(...ys), max = Math.max(...ys);
   const span = (max - min) || 1;
@@ -1261,20 +1245,16 @@ function draw(elId, pts){
   const Y = v => padT + (H - padT - padB) * (1 - (v - y0) / (y1 - y0));
 
   const grid = [], ticks = [];
-  for(let t=0;t<=4;t++){
-    const v = y0 + (y1-y0)*t/4;
+  for(let t=0;t<=3;t++){
+    const v = y0 + (y1-y0)*t/3;
     const y = Y(v);
     grid.push(`<line x1="${padL}" y1="${y}" x2="${W-padR}" y2="${y}" stroke="#EEEEF0" stroke-width="1"/>`);
-    ticks.push(`<text x="${padL-10}" y="${y+4}" text-anchor="end" font-size="12" fill="#9a9a9f">${v.toFixed(0)}</text>`);
+    ticks.push(`<text x="${padL-6}" y="${y+3}" text-anchor="end" font-size="11" fill="#9a9a9f">${v.toFixed(0)}</text>`);
   }
-
   let d = '';
-  pts.forEach((p,i) => {
-    d += (i ? 'L' : 'M') + X(i).toFixed(2) + ',' + Y(p.v).toFixed(2);
-  });
+  pts.forEach((p,i) => { d += (i ? 'L' : 'M') + X(i).toFixed(2) + ',' + Y(p.v).toFixed(2); });
   const area = d + ` L${X(pts.length-1).toFixed(2)},${(H-padB).toFixed(2)} L${padL},${(H-padB).toFixed(2)} Z`;
   const gid = 'g' + elId;
-
   const last = pts[pts.length-1], first = pts[0];
   const svg =
 `<svg viewBox="0 0 ${W} ${H}" role="img">
@@ -1284,20 +1264,18 @@ function draw(elId, pts){
       <stop offset="1" stop-color="#EF3124" stop-opacity="0"/>
     </linearGradient>
   </defs>
-  ${grid.join('')}
-  ${ticks.join('')}
+  ${grid.join('')}${ticks.join('')}
   <path d="${area}" fill="url(#${gid})"/>
-  <path d="${d}" fill="none" stroke="#EF3124" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
-  <circle cx="${X(pts.length-1).toFixed(2)}" cy="${Y(last.v).toFixed(2)}" r="5" fill="#EF3124"/>
-  <text x="${padL}" y="${H-12}" font-size="13" fill="#9a9a9f">${fmtDate(first.d)}</text>
-  <text x="${W-padR}" y="${H-12}" text-anchor="end" font-size="13" fill="#9a9a9f">${fmtDate(last.d)}</text>
-  <text x="${X(pts.length-1).toFixed(2)}" y="${(Y(last.v)-12).toFixed(2)}" text-anchor="end" font-size="13" font-weight="700" fill="#EF3124">${last.v.toFixed(2)}</text>
+  <path d="${d}" fill="none" stroke="#EF3124" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="${X(pts.length-1).toFixed(2)}" cy="${Y(last.v).toFixed(2)}" r="4" fill="#EF3124"/>
+  <text x="${padL}" y="${H-8}" font-size="11" fill="#9a9a9f">${fmtDate(first.d)}</text>
+  <text x="${W-padR}" y="${H-8}" text-anchor="end" font-size="11" fill="#9a9a9f">${fmtDate(last.d)}</text>
 </svg>`;
   el.innerHTML = svg;
 }
 
 draw('chart1y', parse(DATA1Y, 1));
-draw('chart3y', parse(DATA3Y, 2));
+draw('chart3y', parse(DATA3Y, 3));
 </script>
 </body>
 </html>
